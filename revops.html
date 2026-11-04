@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Revenue Operations en español · Belén Guarnieri</title>
+<meta name="description" content="El recorrido del curso de Revenue Operations de HubSpot Academy, módulo por módulo, en español.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: collage sobre papel cálido. Polaroid con cinta en el hero, proyectos como tarjetas pegadas y levemente torcidas,
+   "¿Qué comemos?" como ficha de receta, principios como post-its. Un solo look claro, a propósito. */
+:root{
+  color-scheme:light;
+  --paper:#F7EEE8; --paper-2:#EFE1D9; --card:#FFFCF9; --ink:#2A1E20; --muted:#6B5A5D; --line:#E6D3CB;
+  --rose:#C9908F; --rose-deep:#9E5F63; --rose-soft:#F0D9D6; --pop:#FF4F2B; --pop-ink:#D93A17; --pop-soft:#FFD9CC;
+  --butter:#FBE7B8; --sky:#D9E4EC;
+  --tape-rose:rgba(201,144,143,.55); --tape-pop:rgba(255,79,43,.38);
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand","Comic Sans MS",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(158,95,99,.13) 1px,transparent 1.2px);background-size:22px 22px}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--pop);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--sans);margin:0;letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:0;line-height:1.1}
+.mark{background:linear-gradient(transparent 55%,var(--pop-soft) 55%,var(--pop-soft) 92%,transparent 92%);padding:0 .08em}
+
+/* tape */
+.taped{position:relative}
+.taped::before,.taped::after{content:"";position:absolute;width:118px;height:30px;background:var(--tape-rose);
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px);
+  box-shadow:0 1px 2px rgba(60,30,30,.12);z-index:3;pointer-events:none}
+.taped::before{top:-13px;left:22px;transform:rotate(-7deg)}
+.taped::after{top:-11px;right:24px;transform:rotate(6deg)}
+.taped.pop::before,.taped.pop::after{background-color:var(--tape-pop)}
+.taped.one::after{display:none}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--hand);font-size:30px;font-weight:700;text-decoration:none;line-height:1}
+.brand i{color:var(--pop);font-style:normal}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14.5px;font-weight:600}
+.nav ul a{text-decoration:none;color:var(--muted);padding:4px 2px;background:linear-gradient(var(--pop),var(--pop)) left bottom/0 2px no-repeat;transition:background-size .2s,color .2s}
+.nav ul a:hover{color:var(--ink);background-size:100% 2px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s;background:var(--card)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn.pop{background:var(--pop);color:#fff}
+
+/* hero */
+.hero{padding-block:40px 96px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:start}
+.hello{display:inline-flex;align-items:center;gap:8px;font-family:var(--hand);font-size:28px;font-weight:700;color:var(--rose-deep);transform:rotate(-3deg);margin-left:4px}
+.hero h1{font-size:clamp(42px,5.4vw,70px);font-weight:800;margin-top:14px}
+.hero h1 .serif{display:block;color:var(--rose-deep);font-size:1.06em;margin-top:6px}
+.hero .lead{display:grid;gap:12px;margin-top:26px;max-width:56ch;color:var(--muted);font-size:17px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+.board{position:relative;align-self:center;padding-top:18px;padding-bottom:70px}
+.polaroid{background:var(--card);padding:14px 14px 0;box-shadow:0 18px 40px -18px rgba(70,30,30,.45),0 2px 6px rgba(70,30,30,.08);transform:rotate(3deg);width:min(100%,380px);margin-left:auto;margin-right:18px;transition:transform .3s}
+.polaroid:hover{transform:rotate(0deg) scale(1.01)}
+.polaroid .ph{aspect-ratio:4/5;background:var(--rose);overflow:hidden}
+.polaroid img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
+.polaroid figcaption{font-family:var(--hand);font-size:30px;font-weight:700;text-align:center;padding:10px 0 14px;color:var(--ink)}
+.stamp{position:absolute;left:-6px;top:230px;width:150px;height:150px;border-radius:50%;background:var(--pop);color:#fff;display:grid;place-items:center;text-align:center;transform:rotate(-12deg);box-shadow:0 10px 24px -10px rgba(217,58,23,.6);z-index:4}
+.stamp b{display:block;font-size:40px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.stamp span{font-size:13px;font-weight:700;line-height:1.2;display:block;margin-top:4px}
+.stamp::before{content:"";position:absolute;inset:7px;border:1.5px dashed rgba(255,255,255,.75);border-radius:50%}
+.postit{position:absolute;right:-10px;bottom:0;width:170px;padding:16px 16px 18px;background:var(--butter);transform:rotate(5deg);box-shadow:0 12px 20px -12px rgba(80,50,10,.45);z-index:4;font-family:var(--hand);font-size:23px;font-weight:700;line-height:1.15}
+.postit b{font-family:var(--sans);font-size:30px;font-weight:800;display:block;letter-spacing:-.03em;color:var(--rose-deep)}
+.note-arrow{position:absolute;left:-30px;top:40px;font-family:var(--hand);font-size:25px;color:var(--rose-deep);transform:rotate(-8deg);z-index:4;display:flex;flex-direction:column;align-items:flex-start}
+.note-arrow svg{margin-left:46px;margin-top:-2px}
+
+/* section heads */
+section{padding-block:84px}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 56px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(36px,4.6vw,56px);font-weight:800}
+.sec-head h2 .serif{color:var(--rose-deep)}
+.sec-head .intro{display:grid;gap:10px;color:var(--muted)}
+.sec-head .scribble{font-family:var(--hand);font-size:26px;color:var(--pop-ink);display:inline-block;transform:rotate(-2deg);margin-top:6px}
+
+/* project cards */
+.project{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;align-items:start;background:var(--card);padding:40px;border-radius:6px;box-shadow:0 22px 44px -26px rgba(70,30,30,.42),0 1px 3px rgba(70,30,30,.08);transform:rotate(-.6deg);transition:transform .3s}
+.project:nth-of-type(even){transform:rotate(.6deg)}
+.project:hover{transform:rotate(0)}
+.project + .project{margin-top:80px}
+.clip{position:sticky;top:92px}
+.media{margin:0;background:#fff;padding:10px 10px 12px;box-shadow:0 14px 30px -18px rgba(70,30,30,.5);transform:rotate(-1.5deg)}
+.media video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#2A1E20}
+.media figcaption{font-family:var(--hand);font-size:22px;font-weight:700;padding:8px 4px 0;color:var(--ink)}
+.margin-note{display:flex;align-items:center;gap:6px;margin:18px 0 0 8px;font-family:var(--hand);font-size:24px;color:var(--rose-deep);transform:rotate(-3deg)}
+.story{min-width:0}
+.num{font-family:var(--hand);font-size:44px;font-weight:700;line-height:1;color:var(--pop)}
+.story h3{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.tags span{font-size:12.5px;font-weight:700;padding:5px 11px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card)}
+.tags span:nth-child(3n+1){background:var(--rose-soft)}
+.tags span:nth-child(3n+2){background:var(--butter)}
+.story h4{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:12px}
+.story > p{color:var(--muted);margin-top:10px}
+.facts{margin:26px 0 0;display:grid;gap:18px}
+.facts > div{border-top:1.5px dashed var(--line);padding-top:14px}
+.facts dt{font-family:var(--hand);font-size:25px;font-weight:700;color:var(--rose-deep);line-height:1}
+.facts dd{margin:6px 0 0;display:grid;gap:8px;color:var(--ink)}
+.facts ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.facts li::marker{color:var(--pop)}
+
+/* recipe card */
+.recipe{background:var(--card);background-image:linear-gradient(var(--card) 54px,transparent 54px),repeating-linear-gradient(transparent 0 31px,#E9DCD5 31px 32px);border-top:6px solid var(--pop)}
+.recipe .label{position:absolute;top:18px;right:26px;font-family:var(--hand);font-size:26px;color:var(--pop-ink);transform:rotate(4deg)}
+.story .quote{font-family:var(--hand);font-size:34px;color:var(--pop-ink);line-height:1.1;margin-top:6px}
+
+/* playbooks */
+.books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-top:10px}
+.book{position:relative;display:flex;flex-direction:column;gap:10px;padding:30px 26px 26px;background:var(--card);text-decoration:none;box-shadow:0 18px 32px -22px rgba(70,30,30,.5);transition:transform .25s;min-width:0;border-left:10px solid var(--rose)}
+.book:nth-child(1){transform:rotate(-2deg)}
+.book:nth-child(2){transform:rotate(1.5deg) translateY(14px);border-left-color:var(--pop)}
+.book:nth-child(3){transform:rotate(-1deg);border-left-color:var(--rose-deep)}
+.book:hover{transform:rotate(0) translateY(-4px)}
+.book .k{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--pop-ink);line-height:1}
+.book h3{font-size:21px;font-weight:800;line-height:1.2}
+.book p{color:var(--muted);font-size:15.5px}
+.book .go{margin-top:auto;padding-top:8px;font-weight:700;font-size:15px}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.about-head{position:sticky;top:92px}
+.about-head .eyebrow{font-family:var(--hand);font-size:28px;font-weight:700;color:var(--rose-deep);display:block;transform:rotate(-2deg)}
+.about-head h2{font-size:clamp(34px,4vw,50px);font-weight:800;margin-top:10px}
+.about-head h2 .serif{display:block;color:var(--rose-deep)}
+.notebook{position:relative;background:var(--card);padding:34px 34px 34px 64px;box-shadow:0 20px 40px -26px rgba(70,30,30,.45);
+  background-image:linear-gradient(90deg,transparent 46px,rgba(255,79,43,.45) 46px,rgba(255,79,43,.45) 48px,transparent 48px),repeating-linear-gradient(transparent 0 29px,#EADCD5 29px 30px);background-position:0 14px;line-height:30px;transform:rotate(.5deg)}
+.notebook p + p{margin-top:15px}
+.principles-title{font-family:var(--hand);font-size:34px;font-weight:700;margin:84px 0 30px;text-align:center;color:var(--ink)}
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.sticky{padding:26px 24px 30px;box-shadow:0 16px 24px -16px rgba(70,40,20,.45);min-width:0;transition:transform .25s}
+.sticky:nth-child(1){background:var(--rose-soft);transform:rotate(-2.5deg)}
+.sticky:nth-child(2){background:var(--butter);transform:rotate(1.8deg) translateY(10px)}
+.sticky:nth-child(3){background:var(--pop-soft);transform:rotate(-1.2deg)}
+.sticky:hover{transform:rotate(0) scale(1.02)}
+.sticky .n{font-family:var(--hand);font-size:40px;font-weight:700;color:var(--pop-ink);line-height:1}
+.sticky b{display:block;font-size:20px;font-weight:800;margin-top:8px;letter-spacing:-.01em}
+.sticky p{margin-top:8px;font-size:15.5px;color:var(--ink)}
+
+/* connect */
+.connect{text-align:center;padding-block:40px 30px}
+.connect h2{font-size:clamp(52px,8vw,104px);font-weight:800;display:inline-block;position:relative}
+.connect h2 .dot{color:var(--pop)}
+.connect h2 svg{position:absolute;left:4%;bottom:-18px;width:92%;height:26px}
+.tags-row{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:56px}
+.ltag{position:relative;display:grid;gap:4px;justify-items:start;text-align:left;min-width:240px;max-width:100%;padding:22px 26px 22px 44px;background:var(--card);text-decoration:none;box-shadow:0 16px 28px -18px rgba(70,30,30,.5);transition:transform .25s}
+.ltag::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--rose)}
+.ltag:nth-child(1){transform:rotate(-3deg)}
+.ltag:nth-child(2){transform:rotate(2deg)}
+.ltag:nth-child(3){transform:rotate(-1.5deg)}
+a.ltag:hover{transform:rotate(0) translateY(-4px)}
+.ltag .lbl{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--rose-deep);line-height:1}
+.ltag .val{font-size:16.5px;font-weight:700;overflow-wrap:anywhere}
+.ltag button{margin-top:6px;font:700 13px var(--sans);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;background:var(--butter);color:var(--ink);cursor:pointer}
+footer{padding-block:56px 48px;text-align:center}
+footer .sign{font-family:var(--hand);font-size:42px;font-weight:700;color:var(--rose-deep);transform:rotate(-3deg);display:inline-block}
+footer p{font-size:14px;color:var(--muted);margin-top:10px}
+
+@media (max-width:900px){
+  .hero .wrap,.project,.about,.sec-head{grid-template-columns:minmax(0,1fr)}
+  .board{padding-bottom:64px;max-width:380px;margin:0 auto;width:100%;order:-1}
+  .polaroid{margin:0 auto;width:min(78%,280px)}
+  .stamp{width:104px;height:104px;top:70px;left:-2px}
+  .stamp b{font-size:28px}
+  .stamp span{font-size:11px}
+  .postit{width:140px;font-size:19px;right:-2px;bottom:0}
+  .postit b{font-size:24px}
+  .note-arrow{display:none}
+  .project{padding:26px 20px;gap:28px;transform:none!important}
+  .clip,.about-head{position:static}
+  .books,.principles{grid-template-columns:minmax(0,1fr)}
+  .book:nth-child(2){transform:rotate(1.5deg)}
+  .notebook{padding:26px 20px 26px 54px}
+  section{padding-block:60px}
+  .ltag{min-width:0;width:100%}
+}
+@media (max-width:980px){.nav ul{gap:14px;font-size:13.5px}}
+@media (max-width:780px){.nav ul{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* grafiti en la foto */
+.polaroid{cursor:pointer;outline-offset:6px}
+.polaroid .ph{position:relative}
+.doodles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .15s}
+.doodles :is(path,rect,circle){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .7s ease-out}
+.doodles .lens{fill-opacity:0;transition:fill-opacity .3s .35s,stroke-dashoffset .7s ease-out}
+.polaroid:hover .lens,.polaroid:focus-visible .lens,.polaroid.on .lens{fill-opacity:.92}
+.doodles .dtext{opacity:0;transition:opacity .3s .45s}
+.polaroid:hover .doodles,.polaroid:focus-visible .doodles,.polaroid.on .doodles{opacity:1}
+.polaroid:hover .doodles :is(path,rect,circle),.polaroid:focus-visible .doodles :is(path,rect,circle),.polaroid.on .doodles :is(path,rect,circle){stroke-dashoffset:0}
+.polaroid:hover .dtext,.polaroid:focus-visible .dtext,.polaroid.on .dtext{opacity:1}
+.hint{position:absolute;left:0;bottom:12px;font-family:var(--hand);font-size:23px;font-weight:700;color:var(--rose-deep);transform:rotate(-4deg);margin:0}
+.hint .h-touch{display:none}
+@media (hover:none){.hint .h-mouse{display:none}.hint .h-touch{display:inline}}
+@media (max-width:900px){.hint{left:4px;bottom:8px;font-size:20px}}
+@media (prefers-reduced-motion:reduce){.doodles :is(path,rect,circle){stroke-dashoffset:0}}
+
+.polaroid figcaption .e2{display:none}
+.polaroid:hover figcaption .e1,.polaroid:focus-visible figcaption .e1,.polaroid.on figcaption .e1{display:none}
+.polaroid:hover figcaption .e2,.polaroid:focus-visible figcaption .e2,.polaroid.on figcaption .e2{display:inline}
+
+/* certificación revops */
+.cert-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center}
+.cert{margin:0;background:var(--card);padding:16px 16px 6px;box-shadow:0 22px 40px -22px rgba(70,30,30,.5);transform:rotate(-1.5deg);transition:transform .3s}
+.cert:hover{transform:rotate(0)}
+.cert img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.cert figcaption{font-family:var(--hand);font-size:26px;font-weight:700;color:var(--pop-ink);text-align:right;padding:8px 6px 6px}
+.sec-head h2 .serif{white-space:nowrap}
+#revops .scribble{display:block}
+.pb-head{grid-template-columns:minmax(0,1fr) auto;align-items:end;margin-bottom:44px}
+.pb-intro{color:var(--muted);max-width:560px;margin-top:18px;font-size:17px}
+.pb-note{font-family:var(--hand);font-size:24px;line-height:1.15;color:var(--rose-deep);transform:rotate(-3deg);text-align:right;padding-bottom:6px}
+@media (max-width:900px){.pb-head{grid-template-columns:minmax(0,1fr)}.pb-note{text-align:left;justify-self:start}}
+.mod-index{min-width:0}
+.mi-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.mi-head b{font-size:20px;font-weight:800}
+.mi-head span{font-family:var(--hand);font-size:22px;font-weight:700;color:var(--rose-deep)}
+.mod-index ol{list-style:none;margin:0;padding:0}
+.mod-index li{display:flex;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1.5px dashed var(--line);font-size:16px;font-weight:600}
+.mod-index li .n{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--pop);width:30px;flex:none;line-height:1}
+.mod-index li.extra{color:var(--rose-deep);border-bottom:0}
+.more-certs{margin-top:64px;padding-top:28px;border-top:1.5px dashed var(--line)}
+.mc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-bottom:18px}
+.mc-head h3{font-family:var(--hand);font-size:30px;font-weight:700;color:var(--rose-deep);line-height:1}
+.mc-head a{font-size:14px;font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--pop);text-decoration-thickness:2px;text-underline-offset:4px}
+.more-certs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.more-certs li{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:var(--card);border-left:4px solid var(--rose);border-radius:4px;box-shadow:0 8px 16px -14px rgba(70,30,30,.5);min-width:0}
+.more-certs li:nth-child(3n+2){border-left-color:var(--pop)}
+.more-certs li:nth-child(3n){border-left-color:var(--rose-deep)}
+.more-certs li b{font-size:14.5px;font-weight:700;line-height:1.3}
+.more-certs li span{font-size:13px;color:var(--muted)}
+@media (max-width:900px){.more-certs ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.more-certs ul{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.cert-grid{grid-template-columns:minmax(0,1fr);gap:40px}.sec-head h2 .serif{white-space:normal}}
+
+.rv-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:center}
+.rv-stamp{width:170px;height:170px;border-radius:50%;background:var(--pop);color:#fff;display:grid;place-items:center;text-align:center;transform:rotate(10deg);box-shadow:0 10px 24px -10px rgba(217,58,23,.6);position:relative}
+.rv-stamp::before{content:"";position:absolute;inset:8px;border:1.5px dashed rgba(255,255,255,.75);border-radius:50%}
+.rv-stamp b{display:block;font-size:56px;font-weight:800;line-height:1}
+.rv-stamp span{font-size:14px;font-weight:700;line-height:1.2;display:block}
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.mod{position:relative;display:flex;flex-direction:column;gap:8px;padding:26px 24px 22px;background:var(--card);box-shadow:0 16px 28px -20px rgba(70,30,30,.5);border-top:6px solid var(--rose);min-width:0;transition:transform .25s}
+.mod:nth-child(3n+1){transform:rotate(-1.4deg)}
+.mod:nth-child(3n+2){transform:rotate(1deg);border-top-color:var(--pop)}
+.mod:nth-child(3n){transform:rotate(-.6deg);border-top-color:var(--rose-deep)}
+.mod:hover{transform:rotate(0) translateY(-3px)}
+.mod.workbook{background:var(--butter);grid-column:1/-1;transform:rotate(-.4deg)}
+.mod h3{font-size:20px;font-weight:800;line-height:1.2}
+.mod p{color:var(--muted);font-size:15.5px}
+.pdf-actions{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+.pbtn{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font-weight:700;font-size:14px;text-decoration:none;background:var(--pop);color:#fff;transition:transform .15s,box-shadow .15s}
+.pbtn.ghost{background:var(--card);color:var(--ink)}
+.pbtn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(42,30,32,.72);display:flex;flex-direction:column;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.viewer[hidden]{display:none}
+.v-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--paper);padding:12px 16px;border-radius:12px 12px 0 0;max-width:940px;width:100%;margin:0 auto}
+.v-bar b{font-size:17px;font-weight:800;min-width:0}
+.v-actions{display:flex;gap:10px}
+.v-actions button{font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.v-body{flex:1;overflow:auto;background:var(--paper-2);max-width:940px;width:100%;margin:0 auto;border-radius:0 0 12px 12px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.v-body canvas{display:block;max-width:100%;height:auto;box-shadow:0 8px 20px -10px rgba(70,30,30,.45);background:#fff}
+.v-msg{font-family:var(--hand);font-size:26px;color:var(--rose-deep);margin-top:40px}
+.rv-note{margin-top:48px;font-size:14px;color:var(--muted);text-align:center}
+@media (max-width:900px){.rv-hero{grid-template-columns:minmax(0,1fr)}.rv-stamp{width:130px;height:130px}.rv-stamp b{font-size:42px}.mods{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="index.html">Belén Guarnieri<i>.</i></a>
+    <ul style="display:flex">
+      <li><a href="index.html#revops">← Volver al portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="hero" style="padding-bottom:40px">
+    <div class="wrap rv-hero">
+      <div>
+        <span class="hello">Apuntes de curso ✎</span>
+        <h1>Revenue Operations <span class="serif">en español.</span></h1>
+        <div class="lead">
+          <p>Buscando una formación sólida en Revenue Operations, encontré la certificación de HubSpot Academy: uno de los recursos más completos para entender cómo se alinean marketing, ventas y customer success alrededor del revenue.</p>
+          <p>Mientras la cursaba, armé mis apuntes en español, módulo por módulo. Los comparto acá para que el idioma no sea una barrera para nadie que quiera empezar en RevOps. Cada módulo se puede ver online o descargar en PDF.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn pop" href="https://academy.hubspot.com/courses/revenue-operations" target="_blank" rel="noopener">Ir al curso oficial ↗</a>
+          <a class="btn" href="index.html#revops">Ver mi certificado</a>
+        </div>
+      </div>
+      <div class="rv-stamp"><div><b>9</b><span>módulos<br>+ cuaderno</span></div></div>
+    </div>
+  </header>
+
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="mods">
+        <article class="mod"><span class="num">01</span><h3>Operaciones de ingresos</h3><p>Qué es crecer a escala, los cuatro componentes de RevOps (personas, procesos, sistemas y datos) y los primeros pasos para unificarlos.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-01.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-01.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">02</span><h3>RevOps aplicado al flywheel</h3><p>Del embudo al flywheel: dónde está la fuerza que acelera el crecimiento y la fricción que lo frena, para clientes y equipos.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-02.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-02.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">03</span><h3>Rendición de cuentas con un SLA</h3><p>Un acuerdo entre marketing y ventas para hacerse responsables juntos del revenue, con la matemática para armarlo.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-03.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-03.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">04</span><h3>Cómo mapear un proceso de ventas</h3><p>Diseñar el proceso comercial desde el recorrido del comprador, definir criterios de salida por etapa y llevarlo a un playbook.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-04.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-04.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">05</span><h3>Gestión de sistemas para RevOps</h3><p>Procesos, gobierno de datos y tech stack, en ese orden, para que el CRM sea una fuente de verdad confiable.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-05.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-05.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">06</span><h3>Comunicar el valor de RevOps</h3><p>Hablar el idioma del negocio: ponerle un número a los problemas y presentar propuestas que los líderes aprueben.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-06.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-06.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">07</span><h3>Cómo estructurar el equipo de RevOps</h3><p>Romper los silos entre marketing, ventas y customer success para que trabajen como un solo equipo.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-07.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-07.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">08</span><h3>Contratar para el equipo de RevOps</h3><p>Qué perfiles priorizar, qué cualidades buscar y cómo diseñar un proceso de entrevistas.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-08.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-08.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod"><span class="num">09</span><h3>Evaluar e iterar la estrategia</h3><p>Medir lo que se puso en marcha, convertir oportunidades en objetivos y bajar la visión de largo plazo al día a día.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/modulo-09.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/modulo-09.pdf" download>Descargar ↓</a></div></article>
+        <article class="mod workbook"><span class="num">✎</span><h3>Cuaderno de trabajo</h3><p>Actividades para diagnosticar, diseñar y hacer crecer la estrategia de RevOps de una empresa, lección por lección.</p><div class="pdf-actions"><a class="pbtn view" href="assets/revops/cuaderno-de-trabajo.pdf" target="_blank" rel="noopener">Ver PDF</a><a class="pbtn ghost" href="assets/revops/cuaderno-de-trabajo.pdf" download>Descargar ↓</a></div></article>
+      </div>
+      <p class="rv-note">Traducción no oficial al español hecha por Belén Guarnieri. Contenido original creado por HubSpot Academy, disponible gratis en <a href="https://academy.hubspot.com/courses/revenue-operations" target="_blank" rel="noopener">academy.hubspot.com</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="sign">Belu.</span>
+  <p>Belén Guarnieri · Buenos Aires, Argentina</p>
+</footer>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+  <div class="v-bar">
+    <b id="viewer-title">Módulo</b>
+    <span class="v-actions">
+      <a class="pbtn ghost" id="viewer-dl" href="#" download>Descargar ↓</a>
+      <button class="pbtn" type="button" id="viewer-close">Cerrar ✕</button>
+    </span>
+  </div>
+  <div class="v-body" id="viewer-body"><p class="v-msg" id="viewer-msg">Cargando…</p></div>
+</div>
+
+<script src="assets/vendor/pdf.min.js"></script>
+<script>
+(function(){
+  var lib=window.pdfjsLib, v=document.getElementById('viewer'), body=document.getElementById('viewer-body'),
+      title=document.getElementById('viewer-title'), dl=document.getElementById('viewer-dl'), msg=document.getElementById('viewer-msg'), token=0, lastBtn=null;
+  if(!lib) return;
+  lib.GlobalWorkerOptions.workerSrc='assets/vendor/pdf.worker.min.js';
+  function close(){ v.hidden=true; document.body.style.overflow=''; token++; body.querySelectorAll('canvas').forEach(function(c){c.remove()}); if(lastBtn) lastBtn.focus(); }
+  document.getElementById('viewer-close').addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !v.hidden) close(); });
+  document.querySelectorAll('a.view').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault(); lastBtn=a;
+      var url=a.getAttribute('href'), card=a.closest('.mod'), my=++token;
+      title.textContent=(card.querySelector('.num').textContent.trim()+' · '+card.querySelector('h3').textContent).replace('✎ · ','');
+      dl.href=url; msg.textContent='Cargando…'; msg.hidden=false;
+      body.querySelectorAll('canvas').forEach(function(c){c.remove()});
+      v.hidden=false; document.body.style.overflow='hidden'; document.getElementById('viewer-close').focus();
+      lib.getDocument(url).promise.then(function(pdf){
+        if(my!==token) return; msg.hidden=true;
+        var w=Math.min(body.clientWidth-32, 900), dpr=window.devicePixelRatio||1, i=1;
+        (function next(){
+          if(my!==token || i>pdf.numPages) return;
+          pdf.getPage(i++).then(function(pg){
+            if(my!==token) return;
+            var vp0=pg.getViewport({scale:1}), sc=w/vp0.width, vp=pg.getViewport({scale:sc*dpr}), c=document.createElement('canvas');
+            c.width=vp.width; c.height=vp.height; c.style.width=w+'px';
+            body.appendChild(c);
+            pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(next);
+          });
+        })();
+      }).catch(function(){ if(my===token){ msg.textContent='No se pudo abrir el PDF. Probá con Descargar.'; } });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belén Guarnieri · Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Belén Guarnieri: ventas B2B, desarrollo de negocios y gestión de cuentas en eCommerce, SaaS y marketing digital. Proyectos con IA, experimentos personales y playbooks de ventas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: collage sobre papel cálido. Polaroid con cinta en el hero, proyectos como tarjetas pegadas y levemente torcidas,
+   "¿Qué comemos?" como ficha de receta, principios como post-its. Un solo look claro, a propósito. */
+:root{
+  color-scheme:light;
+  --paper:#F7EEE8; --paper-2:#EFE1D9; --card:#FFFCF9; --ink:#2A1E20; --muted:#6B5A5D; --line:#E6D3CB;
+  --rose:#C9908F; --rose-deep:#9E5F63; --rose-soft:#F0D9D6; --pop:#FF4F2B; --pop-ink:#D93A17; --pop-soft:#FFD9CC;
+  --butter:#FBE7B8; --sky:#D9E4EC;
+  --tape-rose:rgba(201,144,143,.55); --tape-pop:rgba(255,79,43,.38);
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand","Comic Sans MS",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(158,95,99,.13) 1px,transparent 1.2px);background-size:22px 22px}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--pop);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--sans);margin:0;letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:0;line-height:1.1}
+.mark{background:linear-gradient(transparent 55%,var(--pop-soft) 55%,var(--pop-soft) 92%,transparent 92%);padding:0 .08em}
+
+/* tape */
+.taped{position:relative}
+.taped::before,.taped::after{content:"";position:absolute;width:118px;height:30px;background:var(--tape-rose);
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px);
+  box-shadow:0 1px 2px rgba(60,30,30,.12);z-index:3;pointer-events:none}
+.taped::before{top:-13px;left:22px;transform:rotate(-7deg)}
+.taped::after{top:-11px;right:24px;transform:rotate(6deg)}
+.taped.pop::before,.taped.pop::after{background-color:var(--tape-pop)}
+.taped.one::after{display:none}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--hand);font-size:30px;font-weight:700;text-decoration:none;line-height:1}
+.brand i{color:var(--pop);font-style:normal}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14.5px;font-weight:600}
+.nav ul a{text-decoration:none;color:var(--muted);padding:4px 2px;background:linear-gradient(var(--pop),var(--pop)) left bottom/0 2px no-repeat;transition:background-size .2s,color .2s}
+.nav ul a:hover{color:var(--ink);background-size:100% 2px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s;background:var(--card)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn.pop{background:var(--pop);color:#fff}
+
+/* hero */
+.hero{padding-block:40px 96px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:start}
+.hello{display:inline-flex;align-items:center;gap:8px;font-family:var(--hand);font-size:28px;font-weight:700;color:var(--rose-deep);transform:rotate(-3deg);margin-left:4px}
+.hero h1{font-size:clamp(42px,5.4vw,70px);font-weight:800;margin-top:14px}
+.hero h1 .serif{display:block;color:var(--rose-deep);font-size:1.06em;margin-top:6px}
+.hero .lead{display:grid;gap:12px;margin-top:26px;max-width:56ch;color:var(--muted);font-size:17px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+.board{position:relative;align-self:center;padding-top:18px;padding-bottom:70px}
+.polaroid{background:var(--card);padding:14px 14px 0;box-shadow:0 18px 40px -18px rgba(70,30,30,.45),0 2px 6px rgba(70,30,30,.08);transform:rotate(3deg);width:min(100%,380px);margin-left:auto;margin-right:18px;transition:transform .3s}
+.polaroid:hover{transform:rotate(0deg) scale(1.01)}
+.polaroid .ph{aspect-ratio:4/5;background:var(--rose);overflow:hidden}
+.polaroid img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
+.polaroid figcaption{font-family:var(--hand);font-size:30px;font-weight:700;text-align:center;padding:10px 0 14px;color:var(--ink)}
+.stamp{position:absolute;left:-6px;top:230px;width:150px;height:150px;border-radius:50%;background:var(--pop);color:#fff;display:grid;place-items:center;text-align:center;transform:rotate(-12deg);box-shadow:0 10px 24px -10px rgba(217,58,23,.6);z-index:4}
+.stamp b{display:block;font-size:40px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.stamp span{font-size:13px;font-weight:700;line-height:1.2;display:block;margin-top:4px}
+.stamp::before{content:"";position:absolute;inset:7px;border:1.5px dashed rgba(255,255,255,.75);border-radius:50%}
+.postit{position:absolute;right:-10px;bottom:0;width:170px;padding:16px 16px 18px;background:var(--butter);transform:rotate(5deg);box-shadow:0 12px 20px -12px rgba(80,50,10,.45);z-index:4;font-family:var(--hand);font-size:23px;font-weight:700;line-height:1.15}
+.postit b{font-family:var(--sans);font-size:30px;font-weight:800;display:block;letter-spacing:-.03em;color:var(--rose-deep)}
+.note-arrow{position:absolute;left:-30px;top:40px;font-family:var(--hand);font-size:25px;color:var(--rose-deep);transform:rotate(-8deg);z-index:4;display:flex;flex-direction:column;align-items:flex-start}
+.note-arrow svg{margin-left:46px;margin-top:-2px}
+
+/* section heads */
+section{padding-block:84px}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 56px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(36px,4.6vw,56px);font-weight:800}
+.sec-head h2 .serif{color:var(--rose-deep)}
+.sec-head .intro{display:grid;gap:10px;color:var(--muted)}
+.sec-head .scribble{font-family:var(--hand);font-size:26px;color:var(--pop-ink);display:inline-block;transform:rotate(-2deg);margin-top:6px}
+
+/* project cards */
+.project{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;align-items:start;background:var(--card);padding:40px;border-radius:6px;box-shadow:0 22px 44px -26px rgba(70,30,30,.42),0 1px 3px rgba(70,30,30,.08);transform:rotate(-.6deg);transition:transform .3s}
+.project:nth-of-type(even){transform:rotate(.6deg)}
+.project:hover{transform:rotate(0)}
+.project + .project{margin-top:80px}
+.clip{position:sticky;top:92px}
+.media{margin:0;background:#fff;padding:10px 10px 12px;box-shadow:0 14px 30px -18px rgba(70,30,30,.5);transform:rotate(-1.5deg)}
+.media video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#2A1E20}
+.media figcaption{font-family:var(--hand);font-size:22px;font-weight:700;padding:8px 4px 0;color:var(--ink)}
+.margin-note{display:flex;align-items:center;gap:6px;margin:18px 0 0 8px;font-family:var(--hand);font-size:24px;color:var(--rose-deep);transform:rotate(-3deg)}
+.story{min-width:0}
+.num{font-family:var(--hand);font-size:44px;font-weight:700;line-height:1;color:var(--pop)}
+.story h3{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.tags span{font-size:12.5px;font-weight:700;padding:5px 11px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card)}
+.tags span:nth-child(3n+1){background:var(--rose-soft)}
+.tags span:nth-child(3n+2){background:var(--butter)}
+.story h4{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:12px}
+.story > p{color:var(--muted);margin-top:10px}
+.facts{margin:26px 0 0;display:grid;gap:18px}
+.facts > div{border-top:1.5px dashed var(--line);padding-top:14px}
+.facts dt{font-family:var(--hand);font-size:25px;font-weight:700;color:var(--rose-deep);line-height:1}
+.facts dd{margin:6px 0 0;display:grid;gap:8px;color:var(--ink)}
+.facts ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.facts li::marker{color:var(--pop)}
+
+/* recipe card */
+.recipe{background:var(--card);background-image:linear-gradient(var(--card) 54px,transparent 54px),repeating-linear-gradient(transparent 0 31px,#E9DCD5 31px 32px);border-top:6px solid var(--pop)}
+.recipe .label{position:absolute;top:18px;right:26px;font-family:var(--hand);font-size:26px;color:var(--pop-ink);transform:rotate(4deg)}
+.story .quote{font-family:var(--hand);font-size:34px;color:var(--pop-ink);line-height:1.1;margin-top:6px}
+
+/* playbooks */
+.books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-top:10px}
+.book{position:relative;display:flex;flex-direction:column;gap:10px;padding:30px 26px 26px;background:var(--card);text-decoration:none;box-shadow:0 18px 32px -22px rgba(70,30,30,.5);transition:transform .25s;min-width:0;border-left:10px solid var(--rose)}
+.book:nth-child(1){transform:rotate(-2deg)}
+.book:nth-child(2){transform:rotate(1.5deg) translateY(14px);border-left-color:var(--pop)}
+.book:nth-child(3){transform:rotate(-1deg);border-left-color:var(--rose-deep)}
+.book:hover{transform:rotate(0) translateY(-4px)}
+.book .k{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--pop-ink);line-height:1}
+.book h3{font-size:21px;font-weight:800;line-height:1.2}
+.book p{color:var(--muted);font-size:15.5px}
+.book .go{margin-top:auto;padding-top:8px;font-weight:700;font-size:15px}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.about-head{position:sticky;top:92px}
+.about-head .eyebrow{font-family:var(--hand);font-size:28px;font-weight:700;color:var(--rose-deep);display:block;transform:rotate(-2deg)}
+.about-head h2{font-size:clamp(34px,4vw,50px);font-weight:800;margin-top:10px}
+.about-head h2 .serif{display:block;color:var(--rose-deep)}
+.notebook{position:relative;background:var(--card);padding:34px 34px 34px 64px;box-shadow:0 20px 40px -26px rgba(70,30,30,.45);
+  background-image:linear-gradient(90deg,transparent 46px,rgba(255,79,43,.45) 46px,rgba(255,79,43,.45) 48px,transparent 48px),repeating-linear-gradient(transparent 0 29px,#EADCD5 29px 30px);background-position:0 14px;line-height:30px;transform:rotate(.5deg)}
+.notebook p + p{margin-top:15px}
+.principles-title{font-family:var(--hand);font-size:34px;font-weight:700;margin:84px 0 30px;text-align:center;color:var(--ink)}
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.sticky{padding:26px 24px 30px;box-shadow:0 16px 24px -16px rgba(70,40,20,.45);min-width:0;transition:transform .25s}
+.sticky:nth-child(1){background:var(--rose-soft);transform:rotate(-2.5deg)}
+.sticky:nth-child(2){background:var(--butter);transform:rotate(1.8deg) translateY(10px)}
+.sticky:nth-child(3){background:var(--pop-soft);transform:rotate(-1.2deg)}
+.sticky:hover{transform:rotate(0) scale(1.02)}
+.sticky .n{font-family:var(--hand);font-size:40px;font-weight:700;color:var(--pop-ink);line-height:1}
+.sticky b{display:block;font-size:20px;font-weight:800;margin-top:8px;letter-spacing:-.01em}
+.sticky p{margin-top:8px;font-size:15.5px;color:var(--ink)}
+
+/* connect */
+.connect{text-align:center;padding-block:40px 30px}
+.connect h2{font-size:clamp(52px,8vw,104px);font-weight:800;display:inline-block;position:relative}
+.connect h2 .dot{color:var(--pop)}
+.connect h2 svg{position:absolute;left:4%;bottom:-18px;width:92%;height:26px}
+.tags-row{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:56px}
+.ltag{position:relative;display:grid;gap:4px;justify-items:start;text-align:left;min-width:240px;max-width:100%;padding:22px 26px 22px 44px;background:var(--card);text-decoration:none;box-shadow:0 16px 28px -18px rgba(70,30,30,.5);transition:transform .25s}
+.ltag::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--rose)}
+.ltag:nth-child(1){transform:rotate(-3deg)}
+.ltag:nth-child(2){transform:rotate(2deg)}
+.ltag:nth-child(3){transform:rotate(-1.5deg)}
+a.ltag:hover{transform:rotate(0) translateY(-4px)}
+.ltag .lbl{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--rose-deep);line-height:1}
+.ltag .val{font-size:16.5px;font-weight:700;overflow-wrap:anywhere}
+.ltag button{margin-top:6px;font:700 13px var(--sans);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;background:var(--butter);color:var(--ink);cursor:pointer}
+footer{padding-block:56px 48px;text-align:center}
+footer .sign{font-family:var(--hand);font-size:42px;font-weight:700;color:var(--rose-deep);transform:rotate(-3deg);display:inline-block}
+footer p{font-size:14px;color:var(--muted);margin-top:10px}
+
+@media (max-width:900px){
+  .hero .wrap,.project,.about,.sec-head{grid-template-columns:minmax(0,1fr)}
+  .board{padding-bottom:64px;max-width:380px;margin:0 auto;width:100%;order:-1}
+  .polaroid{margin:0 auto;width:min(78%,280px)}
+  .stamp{width:104px;height:104px;top:70px;left:-2px}
+  .stamp b{font-size:28px}
+  .stamp span{font-size:11px}
+  .postit{width:140px;font-size:19px;right:-2px;bottom:0}
+  .postit b{font-size:24px}
+  .note-arrow{display:none}
+  .project{padding:26px 20px;gap:28px;transform:none!important}
+  .clip,.about-head{position:static}
+  .books,.principles{grid-template-columns:minmax(0,1fr)}
+  .book:nth-child(2){transform:rotate(1.5deg)}
+  .notebook{padding:26px 20px 26px 54px}
+  section{padding-block:60px}
+  .ltag{min-width:0;width:100%}
+}
+@media (max-width:980px){.nav ul{gap:14px;font-size:13.5px}}
+@media (max-width:780px){.nav ul{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* grafiti en la foto */
+.polaroid{cursor:pointer;outline-offset:6px}
+.polaroid .ph{position:relative}
+.doodles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .15s}
+.doodles :is(path,rect,circle){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .7s ease-out}
+.doodles .lens{fill-opacity:0;transition:fill-opacity .3s .35s,stroke-dashoffset .7s ease-out}
+.polaroid:hover .lens,.polaroid:focus-visible .lens,.polaroid.on .lens{fill-opacity:.92}
+.doodles .dtext{opacity:0;transition:opacity .3s .45s}
+.polaroid:hover .doodles,.polaroid:focus-visible .doodles,.polaroid.on .doodles{opacity:1}
+.polaroid:hover .doodles :is(path,rect,circle),.polaroid:focus-visible .doodles :is(path,rect,circle),.polaroid.on .doodles :is(path,rect,circle){stroke-dashoffset:0}
+.polaroid:hover .dtext,.polaroid:focus-visible .dtext,.polaroid.on .dtext{opacity:1}
+.hint{position:absolute;left:0;bottom:12px;font-family:var(--hand);font-size:23px;font-weight:700;color:var(--rose-deep);transform:rotate(-4deg);margin:0}
+.hint .h-touch{display:none}
+@media (hover:none){.hint .h-mouse{display:none}.hint .h-touch{display:inline}}
+@media (max-width:900px){.hint{left:4px;bottom:8px;font-size:20px}}
+@media (prefers-reduced-motion:reduce){.doodles :is(path,rect,circle){stroke-dashoffset:0}}
+
+.polaroid figcaption .e2{display:none}
+.polaroid:hover figcaption .e1,.polaroid:focus-visible figcaption .e1,.polaroid.on figcaption .e1{display:none}
+.polaroid:hover figcaption .e2,.polaroid:focus-visible figcaption .e2,.polaroid.on figcaption .e2{display:inline}
+
+/* certificación revops */
+.cert-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center}
+.cert{margin:0;background:var(--card);padding:16px 16px 6px;box-shadow:0 22px 40px -22px rgba(70,30,30,.5);transform:rotate(-1.5deg);transition:transform .3s}
+.cert:hover{transform:rotate(0)}
+.cert img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.cert figcaption{font-family:var(--hand);font-size:26px;font-weight:700;color:var(--pop-ink);text-align:right;padding:8px 6px 6px}
+.sec-head h2 .serif{white-space:nowrap}
+#revops .scribble{display:block}
+.pb-head{grid-template-columns:minmax(0,1fr) auto;align-items:end;margin-bottom:44px}
+.pb-intro{color:var(--muted);max-width:560px;margin-top:18px;font-size:17px}
+.pb-note{font-family:var(--hand);font-size:24px;line-height:1.15;color:var(--rose-deep);transform:rotate(-3deg);text-align:right;padding-bottom:6px}
+@media (max-width:900px){.pb-head{grid-template-columns:minmax(0,1fr)}.pb-note{text-align:left;justify-self:start}}
+.mod-index{min-width:0}
+.mi-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.mi-head b{font-size:20px;font-weight:800}
+.mi-head span{font-family:var(--hand);font-size:22px;font-weight:700;color:var(--rose-deep)}
+.mod-index ol{list-style:none;margin:0;padding:0}
+.mod-index li{display:flex;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1.5px dashed var(--line);font-size:16px;font-weight:600}
+.mod-index li .n{font-family:var(--hand);font-size:24px;font-weight:700;color:var(--pop);width:30px;flex:none;line-height:1}
+.mod-index li.extra{color:var(--rose-deep);border-bottom:0}
+.more-certs{margin-top:64px;padding-top:28px;border-top:1.5px dashed var(--line)}
+.mc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-bottom:18px}
+.mc-head h3{font-family:var(--hand);font-size:30px;font-weight:700;color:var(--rose-deep);line-height:1}
+.mc-head a{font-size:14px;font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--pop);text-decoration-thickness:2px;text-underline-offset:4px}
+.more-certs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.more-certs li{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:var(--card);border-left:4px solid var(--rose);border-radius:4px;box-shadow:0 8px 16px -14px rgba(70,30,30,.5);min-width:0}
+.more-certs li:nth-child(3n+2){border-left-color:var(--pop)}
+.more-certs li:nth-child(3n){border-left-color:var(--rose-deep)}
+.more-certs li b{font-size:14.5px;font-weight:700;line-height:1.3}
+.more-certs li span{font-size:13px;color:var(--muted)}
+@media (max-width:900px){.more-certs ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.more-certs ul{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.cert-grid{grid-template-columns:minmax(0,1fr);gap:40px}.sec-head h2 .serif{white-space:normal}}
+</style>
+
+<meta property="og:title" content="Belén Guarnieri · Portfolio">
+<meta property="og:description" content="Business Development y ventas B2B para eCommerce en Latinoamérica. Agentes de IA para prospectar, demos interactivas y playbooks de ventas.">
+<meta property="og:image" content="https://belenguarnieri.github.io/portfolio/assets/img/og.jpg">
+<meta property="og:url" content="https://belenguarnieri.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231A1426'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%23FAF8FC'%3EBG%3C/text%3E%3Ccircle cx='50' cy='42' r='4' fill='%23A88BFA'/%3E%3C/svg%3E">
+</head>
+<body>
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Belén Guarnieri<i>.</i></a>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#fuera-de-horario">Fuera de horario</a></li>
+      <li><a href="#playbooks">Playbooks</a></li>
+      <li><a href="#revops">Certificaciones</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#contacto">Conectemos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="inicio">
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Me da <span class="mark">curiosidad.</span> Lo investigo. Lo pruebo. <span class="serif">Y a veces termino creando algo.</span></h1>
+        <div class="lead">
+          <p>Trabajo en el mundo del eCommerce, SaaS y marketing digital. Mi experiencia viene de las ventas B2B, el desarrollo de negocios y la gestión de cuentas, pero mis intereses nunca se quedaron solamente ahí.</p>
+          <p>Me gusta entender cómo funcionan las cosas, encontrar conexiones entre ideas y experimentar con tecnología. Especialmente con IA, que se convirtió en una de mis formas favoritas de aprender y construir.</p>
+          <p>Esta página reúne algunas de esas cosas: proyectos de trabajo, experimentos personales y recursos que fui creando con lo que aprendí en el camino.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn pop" href="#proyectos">Explorar proyectos</a>
+          <a class="btn" href="assets/cv-belen-guarnieri.pdf" download>Descargar CV ↓</a>
+        </div>
+      </div>
+      <div class="board" aria-label="Foto y datos">
+        <div class="note-arrow" aria-hidden="true">esta soy yo
+          <svg width="70" height="54" viewBox="0 0 70 54" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c10 22 28 36 58 40"/><path d="M50 34l13 10-15 5"/></svg>
+        </div>
+        <figure class="polaroid taped" style="margin-top:0" tabindex="0" aria-label="Foto de Belén. Pasá el cursor o tocala para ver la versión dibujada.">
+          <div class="ph"><img src="assets/img/belen.webp" alt="Belén Guarnieri sonriendo, con sweater claro y pañuelo estampado" width="800" height="1000">
+          <svg class="doodles" viewBox="0 0 800 1000" aria-hidden="true">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(0 -8) rotate(12 399 452)" stroke="#16100F" stroke-width="7">
+                <path class="lens" pathLength="1" fill="#16100F" d="M302 428q46-8 92 0q4 34-12 52q-30 16-62 0q-20-18-18-52z"/>
+                <path class="lens" pathLength="1" fill="#16100F" d="M406 428q46-8 92 0q2 34-14 52q-30 16-62 0q-18-18-16-52z"/>
+                <path pathLength="1" d="M394 436q12-8 12 0"/>
+                <path pathLength="1" d="M302 434l-38-8M498 434l36-10"/>
+                <path pathLength="1" stroke="#fff" stroke-width="5" d="M318 444l16-10M422 444l16-10"/>
+              </g>
+              <path pathLength="1" transform="translate(4 18) rotate(12 345 250)" stroke="var(--pop)" stroke-width="8" d="M282 278l-6-62 34 30 32-50 30 50 34-30-6 62z"/>
+              <g stroke="var(--pop)" stroke-width="5" opacity=".75">
+                <path pathLength="1" d="M310 512q14-10 28 0M314 526q14-10 28 0"/>
+                <path pathLength="1" d="M432 528q14-10 28 0M436 542q14-10 28 0"/>
+              </g>
+              <path pathLength="1" stroke="var(--ink)" stroke-width="6" fill="#fff" d="M496 126c66-28 222-26 276 6 34 22 24 76-14 92-54 22-166 24-220 6l-46 44 14-56c-36-26-40-72-10-92z"/>
+              <g stroke="var(--ink)" stroke-width="6">
+                <path pathLength="1" d="M70 170c0-14 90-14 90 0v62c0 14-90 14-90 0z"/>
+                <path pathLength="1" d="M70 170c0 14 90 14 90 0M70 200c0 14 90 14 90 0"/>
+              </g>
+              <g stroke="var(--pop)" stroke-width="6">
+                <path pathLength="1" d="M60 400l50-36 26 18 56-64"/>
+                <path pathLength="1" d="M168 318l26-2 0 26"/>
+              </g>
+              <g stroke="var(--ink)" stroke-width="5">
+                <circle pathLength="1" cx="680" cy="440" r="62"/>
+                <circle pathLength="1" cx="680" cy="424" r="13"/>
+                <path pathLength="1" d="M656 470q24-30 48 0"/>
+              </g>
+              <g stroke="var(--pop)" stroke-width="5">
+                <path pathLength="1" d="M680 352v20M680 528v-20M592 440h20M768 440h-20"/>
+                <path pathLength="1" d="M672 364l8 8 8-8M672 516l8-8 8 8M604 432l8 8-8 8M756 432l-8 8 8 8"/>
+              </g>
+              <path pathLength="1" stroke="var(--ink)" stroke-width="7" d="M600 760l40-50 34 26 50-80"/>
+              <path pathLength="1" stroke="var(--ink)" stroke-width="7" d="M696 658l28-2 2 28"/>
+              <g stroke="var(--pop)" stroke-width="6">
+                <path pathLength="1" d="M498 280v34M481 297h34"/>
+                <path pathLength="1" d="M248 120v28M234 134h28"/>
+              </g>
+            </g>
+            <g class="dtext" fill="var(--ink)" font-family="Caveat, 'Segoe Print', cursive" font-weight="700">
+              <text x="636" y="194" font-size="44" text-anchor="middle" fill="var(--pop-ink)" transform="rotate(-3 636 194)">Conectemos</text>
+              <text x="115" y="296" font-size="40" text-anchor="middle" transform="rotate(-8 115 296)">CRM</text>
+              <text x="44" y="446" font-size="40" fill="var(--pop-ink)" transform="rotate(-6 44 446)">revenue</text>
+              <text x="680" y="574" font-size="38" text-anchor="middle" transform="rotate(4 680 574)">customer</text>
+              <text x="604" y="662" font-size="38" transform="rotate(-6 604 662)">pipeline</text>
+              <text x="530" y="352" font-size="48" fill="var(--pop-ink)" transform="rotate(8 530 352)">IA</text>
+            </g>
+          </svg></div>
+          <figcaption>Belu <span class="e1">☺</span><span class="e2">😎</span></figcaption>
+        </figure>
+        <div class="stamp"><div><b>+10</b><span>años en<br>ventas B2B</span></div></div>
+        <div class="postit"><b>+5 años</b>en SaaS</div>
+        <p class="hint" aria-hidden="true"><span class="h-mouse">pasá el cursor por la foto ✎</span><span class="h-touch">tocá la foto ✎</span></p>
+      </div>
+    </div>
+  </header>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Ideas que llevé <span class="serif">a la práctica.</span></h2>
+          <span class="scribble">↓ algunas de mis favoritas</span>
+        </div>
+        <div class="intro">
+          <p>No todos mis proyectos nacieron de una gran idea. Algunos empezaron con una pregunta, otros con un problema que me molestaba y otros simplemente con ganas de probar si algo era posible.</p>
+          <p>Acá comparto algunos. Las demostraciones profesionales utilizan información ficticia y no exponen datos confidenciales.</p>
+        </div>
+      </div>
+
+      <article class="project taped">
+        <div class="clip">
+          <figure class="media">
+            <video controls preload="metadata" playsinline poster="assets/img/sistema-outbound.jpg">
+              <source src="assets/videos/sistema-outbound.mp4" type="video/mp4">
+            </video>
+            <figcaption>Ver video del proyecto · 1:51</figcaption>
+          </figure>
+          <p class="margin-note">↑ dale play, son menos de 2 minutos</p>
+        </div>
+        <div class="story">
+          <span class="num">01</span>
+          <h3>Sistema Outbound con IA</h3>
+          <div class="tags"><span>IA aplicada a ventas</span><span>Claude</span><span>Diseño de prompts</span><span>Prospección</span></div>
+          <h4>¿Y si la IA me ayudara a pensar antes de escribir?</h4>
+          <p>La prospección comercial tiene una parte que disfruto mucho: investigar empresas, entender qué hacen, encontrar oportunidades y pensar cómo iniciar una conversación que tenga sentido.</p>
+          <p>Lo que no me entusiasma tanto es repetir tareas que podrían resolverse de otra manera.</p>
+          <p>Así empecé a experimentar con agentes en Claude.</p>
+          <dl class="facts">
+            <div><dt>Qué armé</dt><dd>
+              <p>Tres asistentes con objetivos diferentes:</p>
+              <ul>
+                <li>Uno para explorar ideas de contenido.</li>
+                <li>Otro para ayudarme a desarrollar publicaciones de LinkedIn.</li>
+                <li>Otro para analizar bases de prospectos, priorizar contactos según criterios definidos y proponer mensajes personalizados a partir de señales relevantes.</li>
+              </ul>
+              <p>No son agentes que venden solos ni un sistema autónomo de prospección. Son herramientas que me ayudan a investigar, organizar información y trabajar con más contexto.</p>
+            </dd></div>
+            <div><dt>Qué hago yo</dt><dd><p>Defino los criterios, diseño las instrucciones, reviso los resultados y decido qué utilizar. Las conversaciones con las personas siguen siendo mías.</p></dd></div>
+            <div><dt>Lo que aprendí</dt><dd><p>Que una buena herramienta de IA no empieza con un prompt espectacular. Empieza por entender qué problema querés resolver y qué decisiones no deberías delegar.</p></dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project taped pop">
+        <div class="clip">
+          <figure class="media" style="transform:rotate(1.5deg)">
+            <video controls preload="metadata" playsinline poster="assets/img/nova.jpg">
+              <source src="assets/videos/nova.mp4" type="video/mp4">
+            </video>
+            <figcaption>Ver recorrido del proyecto · 1:53</figcaption>
+          </figure>
+          <p class="margin-note">↑ una tienda que se recorre, no se explica</p>
+        </div>
+        <div class="story">
+          <span class="num">02</span>
+          <h3>NOVA | CONNEX by Connectif</h3>
+          <div class="tags"><span>eCommerce</span><span>Marketing Automation</span><span>Demo interactiva</span><span>Storytelling</span></div>
+          <h4>Quería mostrar una experiencia, no explicarla con veinte slides.</h4>
+          <p>Cuando trabajás con plataformas de marketing automation, hay funcionalidades que pueden resultar abstractas para alguien que recién conoce el producto.</p>
+          <p>Personalización, segmentación, automatizaciones, comportamiento del usuario... Son conceptos mucho más fáciles de entender cuando los ves suceder.</p>
+          <p>Entonces me pregunté: ¿y si una persona pudiera recorrer una tienda ficticia y experimentar por sí misma qué cambia cuando se incorpora una plataforma de automatización?</p>
+          <dl class="facts">
+            <div><dt>Qué construí</dt><dd>
+              <p>Una experiencia interactiva basada en una tienda de moda ficticia.</p>
+              <p>El visitante puede navegar productos, interactuar con la tienda y comparar escenarios con y sin determinadas capacidades de marketing automation.</p>
+              <p>La idea es visualizar comportamientos y oportunidades que, en una presentación tradicional, quedarían solamente en palabras.</p>
+            </dd></div>
+            <div><dt>Mi participación</dt><dd><p>Conceptualicé la experiencia, definí los escenarios, diseñé la narrativa comercial y trabajé en su construcción con herramientas de IA.</p></dd></div>
+            <div><dt>Lo que más me gusta</dt><dd>
+              <p>Que transforma una explicación técnica en algo que cualquiera puede explorar, sin necesidad de conocer previamente la tecnología.</p>
+              <p>No reemplaza una demostración real de producto. Es otra manera de despertar curiosidad y facilitar una primera conversación.</p>
+            </dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="fuera-de-horario">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Fuera <span class="serif">de horario.</span></h2>
+          <span class="scribble">↓ receta de la casa</span>
+        </div>
+        <div class="intro">
+          <p>La curiosidad no se termina cuando cierro la computadora del trabajo.</p>
+          <p>A veces estoy investigando una herramienta nueva. Otras veces termino armando una aplicación para resolver algo completamente cotidiano.</p>
+        </div>
+      </div>
+      <article class="project recipe taped one">
+        <span class="label" aria-hidden="true">receta n.º 03 ♥</span>
+        <div class="clip">
+          <figure class="media">
+            <video controls preload="metadata" playsinline poster="assets/img/que-comemos.jpg">
+              <source src="assets/videos/que-comemos.mp4" type="video/mp4">
+            </video>
+            <figcaption>Ver recorrido de la aplicación · 1:15</figcaption>
+          </figure>
+          <p class="margin-note">↑ aprobado por la adolescente de la casa (casi siempre)</p>
+        </div>
+        <div class="story">
+          <span class="num">03</span>
+          <h3>¿Qué <span class="serif">comemos?</span></h3>
+          <div class="tags"><span>Proyecto personal</span><span>Claude</span><span>Diseño de producto</span><span>Personalización</span></div>
+          <h4>La pregunta más difícil de mi casa no tiene nada que ver con tecnología.</h4>
+          <p class="quote">Es: «¿Qué comemos hoy?».</p>
+          <p>Convivo con una adolescente que tiene gustos bastante específicos. Y cuando digo específicos, hablo de esos detalles que hacen que un ingrediente sea aceptable de una manera y completamente inaceptable de otra.</p>
+          <p>Después de demasiadas conversaciones sobre qué cocinar, pensé que podía intentar resolverlo con una aplicación.</p>
+          <dl class="facts">
+            <div><dt>Qué construí</dt><dd>
+              <p>Un planificador de comidas basado en preferencias individuales.</p>
+              <p>Cada persona puede completar un cuestionario rápido de 27 preguntas o uno más completo, pensado para quienes tienen preferencias alimentarias muy particulares.</p>
+              <p>La aplicación utiliza esas respuestas para filtrar un catálogo de 200 recetas y proponer almuerzos y cenas para la semana.</p>
+            </dd></div>
+            <div><dt>La parte divertida</dt><dd><p>Descubrir que no alcanza con preguntar «¿te gusta la cebolla?». A veces hay que preguntar cómo está cortada, cocinada o incorporada a una preparación.</p></dd></div>
+            <div><dt>Lo que me dejó</dt><dd>
+              <p>Una idea que también aparece en mi trabajo: las mejores soluciones suelen empezar con mejores preguntas.</p>
+              <p>La desarrollé con ayuda de Claude, combinando mis ideas, pruebas y ajustes sobre la experiencia.</p>
+            </dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="playbooks">
+    <div class="wrap">
+      <div class="sec-head pb-head">
+        <div>
+          <h2>Sales<span class="serif">.Playbooks</span></h2>
+          <span class="scribble">Cosas que aprendí vendiendo y decidí compartir.</span>
+          <p class="pb-intro">Años de metodologías, errores y aprendizajes en ventas B2B, ordenados para que cualquiera pueda adaptar y usar lo que le sirva.</p>
+        </div>
+        <span class="pb-note">sin fórmulas mágicas,<br>solo herramientas de trabajo ✎</span>
+      </div>
+      <div class="books">
+        <a class="book" href="https://belenguarnieri.github.io/sales.playbooks/prospeccion-frio.html" target="_blank" rel="noopener">
+          <span class="k">8 capítulos</span>
+          <h3>Prospección en frío: el sistema completo</h3>
+          <p>Desde definir un ICP y trabajar con datos hasta construir mensajes, cadencias multicanal y criterios de medición.</p>
+          <span class="go">Leer playbook ↗</span>
+        </a>
+        <a class="book" href="https://belenguarnieri.github.io/sales.playbooks/email-outreach.html" target="_blank" rel="noopener">
+          <span class="k">5 plantillas</span>
+          <h3>Email Outreach: de inbox a reunión</h3>
+          <p>Una guía sobre entregabilidad, estructura de emails, secuencias y decisiones que influyen en una estrategia de contacto.</p>
+          <span class="go">Leer playbook ↗</span>
+        </a>
+        <a class="book" href="https://belenguarnieri.github.io/sales.playbooks/manejo-objeciones.html" target="_blank" rel="noopener">
+          <span class="k">7 objeciones</span>
+          <h3>Manejo de objeciones B2B</h3>
+          <p>Preguntas, ejemplos y formas de abordar esas conversaciones en las que un «no» todavía merece ser entendido.</p>
+          <span class="go">Leer playbook ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="revops">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="scribble" style="margin:0 0 6px">Certificación</span>
+          <h2>Revenue Operations <span class="serif">· HubSpot Academy</span></h2>
+        </div>
+        <div class="intro">
+          <p>Buscando una formación sólida en Revenue Operations, encontré la certificación de HubSpot Academy: uno de los recursos más completos para entender cómo se alinean marketing, ventas y customer success alrededor del revenue.</p>
+          <p>Mientras la cursaba, armé mis apuntes en español, módulo por módulo. Los comparto acá para que el idioma no sea una barrera para nadie que quiera empezar en RevOps.</p>
+        </div>
+      </div>
+      <div class="cert-grid">
+        <figure class="cert taped pop">
+          <img src="assets/img/cert-revops.jpg" alt="Certificado HubSpot Revenue Operations Certified a nombre de Belén Guarnieri, válido de noviembre 2026 a diciembre 2028" width="1140" height="880" loading="lazy">
+          <figcaption>¡certificada! nov 2026</figcaption>
+        </figure>
+        <div class="mod-index">
+          <div class="mi-head"><b>Contenido</b><span>9 módulos + cuaderno</span></div>
+          <ol>
+              <li><span class="n">01</span>Operaciones de ingresos</li>
+              <li><span class="n">02</span>RevOps aplicado al flywheel</li>
+              <li><span class="n">03</span>Rendición de cuentas con un SLA</li>
+              <li><span class="n">04</span>Cómo mapear un proceso de ventas</li>
+              <li><span class="n">05</span>Gestión de sistemas para RevOps</li>
+              <li><span class="n">06</span>Comunicar el valor de RevOps</li>
+              <li><span class="n">07</span>Cómo estructurar el equipo de RevOps</li>
+              <li><span class="n">08</span>Contratar para el equipo de RevOps</li>
+              <li><span class="n">09</span>Evaluar e iterar la estrategia</li>
+              <li class="extra"><span class="n">✎</span>Cuaderno de trabajo</li>
+          </ol>
+          <div class="ctas" style="margin-top:22px">
+            <a class="btn pop" href="revops.html">Ver y descargar los módulos</a>
+          </div>
+        </div>
+      </div>
+      <div class="more-certs">
+        <div class="mc-head">
+          <h3>Más certificaciones</h3>
+          <a href="https://www.linkedin.com/in/belenguarnieri/details/certifications/" target="_blank" rel="noopener">Ver todas en LinkedIn ↗</a>
+        </div>
+        <ul>
+          <li><b>Ecommerce para pymes</b><span>Santander Open Academy · 2026</span></li>
+          <li><b>Oratoria</b><span>Coderhouse · 2026</span></li>
+          <li><b>Lead Generation</b><span>Doppler · 2026</span></li>
+          <li><b>Estrategias de Captación y Conversión</b><span>Doppler · 2026</span></li>
+          <li><b>Prompting responsable: IA en tu negocio</b><span>Santander Open Academy · 2025</span></li>
+          <li><b>Transformación Digital</b><span>Santander Open Academy · 2024</span></li>
+          <li><b>Escritura efectiva y persuasiva</b><span>Santander Open Academy · 2024</span></li>
+          <li><b>Scrum Master Avanzado</b><span>EducaciónIT · 2023</span></li>
+          <li><b>Inbound Marketing</b><span>Coderhouse · 2022</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap">
+      <div class="about">
+        <div class="about-head">
+          <span class="eyebrow">Un poco más sobre mí</span>
+          <h2>No me interesa vender tecnología. <span class="serif">Me interesa entender qué puede cambiar.</span></h2>
+        </div>
+        <div class="notebook taped one">
+          <p>Los negocios no necesitan más herramientas. Necesitan mejores decisiones, procesos que funcionen y tecnología que resuelva problemas reales.</p>
+          <p>Mi experiencia está en el cruce entre negocio, tecnología y personas.</p>
+          <p>Trabajo sobre desarrollo comercial, gestión de cuentas y crecimiento de negocios B2B, dentro del ecosistema SaaS y eCommerce.</p>
+          <p>Me interesa entender qué pasa después de la venta: cómo se implementa una solución, cómo se integra, por qué se adopta (o no) y qué valor termina generando.</p>
+          <p>Hoy estoy profundizando en Customer Success, RevOps, automatización e inteligencia artificial.</p>
+          <p>Me gusta conectar puntos, cuestionar procesos y encontrar oportunidades donde otros ven simplemente una herramienta.</p>
+          <p>No me interesa quedarme con el manual. Me interesa entender cómo funciona, por qué funciona y qué más se puede hacer con eso.</p>
+        </div>
+      </div>
+      <h3 class="principles-title">Tres cosas que suelen aparecer en mi manera de trabajar</h3>
+      <div class="principles">
+        <div class="sticky"><span class="n">01</span><b>Preguntar antes de proponer.</b><p>Me interesa entender el contexto, no solamente encontrar una respuesta rápida.</p></div>
+        <div class="sticky"><span class="n">02</span><b>Experimentar antes de descartar.</b><p>Si una idea me genera curiosidad, probablemente quiera probarla para descubrir qué funciona y qué no.</p></div>
+        <div class="sticky"><span class="n">03</span><b>Compartir lo que aprendo.</b><p>Me gusta intercambiar conocimientos, explicar cosas que descubrí y aprender de personas que saben más que yo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap connect">
+      <h2>Conectemos<span class="dot">.</span>
+        <svg viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16C80 6 170 4 250 10s110 8 146 2" fill="none" stroke="var(--pop)" stroke-width="5" stroke-linecap="round"/></svg>
+      </h2>
+      <div class="tags-row">
+        <a class="ltag" href="https://www.linkedin.com/in/belenguarnieri" target="_blank" rel="noopener"><span class="lbl">LinkedIn ↗</span><span class="val">in/belenguarnieri</span></a>
+        <a class="ltag" href="https://belenguarnieri.github.io/sales.playbooks/" target="_blank" rel="noopener"><span class="lbl">Blog ↗</span><span class="val">Sales.Playbooks</span></a>
+        <div class="ltag"><span class="lbl">Email</span><span class="val" id="mail-text">belen.guarnieri@gmail.com</span><button type="button" id="copy-mail">Copiar</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="sign">Belu.</span>
+  <p>Belén Guarnieri · Buenos Aires, Argentina</p>
+  <p>Pensado por mí. Construido con herramientas de IA. Probado, cuestionado y ajustado muchas veces.</p>
+</footer>
+
+<script>
+(function(){
+  var pol=document.querySelector('.polaroid');
+  pol.addEventListener('click',function(){pol.classList.toggle('on')});
+  pol.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pol.classList.toggle('on')}});
+})();
+(function(){
+  var b=document.getElementById('copy-mail'),t=document.getElementById('mail-text');
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='¡Copiado!';setTimeout(function(){b.textContent='Copiar'},1800)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(t.textContent).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+
+</body>
+</html>
